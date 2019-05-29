@@ -1,0 +1,97 @@
+21200
+
+Position:01234
+Digit:   21200
+
+boolean isSelfDescribingNumber( String number ) throws InvalidInputException{
+    
+if( number==null || number.length() == 0 ){
+    throw new InvalidInputException(“String cannot be null or empty”);
+}
+if( number.charAt(0) == ‘-’) return false;
+
+//3*n , where n = size of string
+    char charNumber[] = number.toCharArray(); // {‘1’,’2’,’1’,’0’}
+int count[] = new int[number.length()];   // {0,0,0,0}
+int freq[] = new int[number.length()];    // {0,0,0,0}
+
+//O(n)
+for( int i=0 ; i<number.length() ; i++ ){
+    if( !Character.isDigit(charNumber[i]) )
+throw new InvalidInputException(“String cannot be alphanumeric”);
+    count[i] = (int)(charNumber[i] - ‘0’); //{1,2,1,0}
+    freq[(int)(charNumber[i] - ‘0’)]++;    //{1,2,1,0}
+}
+//O(n)
+for( int i=0 ; i<number.length() ; i++){
+
+    if( count[i] != freq[i] )
+return false; 
+}     
+    return true;
+
+} 
+
+//time complexity = O(n)
+//Space Compleity = O(n)
+
+
+eg:
+null -> false
+0 -> false
+1 -> false
+1210 -> true
+-1210 -> false
+00 -> false
+123sn -> 
+ 
+
+
+VALID: [1, 3, 2] 
+VALID: [1, 2, 3, 5, 4] 
+INVALID: [] // No elements in ascending or descending order 
+INVALID: [1] // No elements in ascending or descending order 
+INVALID: [1, 2, 3, 4, 5] // No elements in descending order 
+INVALID: [5, 4, 3, 2, 1] // No elements in ascending order 
+INVALID: [1, 3, 5, 2, 4] // Elements go back to ascending at end. 
+INVALID: [1, 2, 3, 2, 1] // Duplicate numbers 
+
+int findMin( int []ar ){
+
+    isValid(ar);
+
+return Math.min(ar[0],ar[ar.length-1]);
+
+}
+
+boolean isValid( int ar[] ){
+    
+    Set<Integer> mySet = new HashSet<>();
+
+    if( ar == null || ar.length == 0) 
+return false; 
+
+    int index = 0 ;
+    while( index<ar.length-1 && ar[index]<ar[index+1]){
+    mySet.add( ar[index] ); 
+index++;
+}
+
+
+if( index == 0 || index == ar.length - 1 )
+return false;
+
+while( index<ar.length-1 && ar[index]>ar[index+1] ){
+if( mySet.contains(ar[index]))
+return false; 
+index++;
+mySey.add(ar[index])
+}
+if( mySet.contains(ar[index]) )
+    return false;
+
+if( index == ar.length - 1 )
+return true;
+else return false;  
+
+}

@@ -1,0 +1,60 @@
+public static void main(String[] args) throws Exception {
+
+		InputReader in = new InputReader( new FileInputStream("src/com/programming/competitions/input.txt") );//Main.class.getResourceAsStream("input.txt"));
+		PrintWriter pw = new PrintWriter("src/com/programming/competitions/output.txt");
+		
+		int t = in.readInt();
+		int caseIndex = 1 ;
+		char matrix[][] = new char[1005][1005];
+		int n ;
+		do{
+			printCaseIndex(pw, caseIndex);
+			n = in.readInt();
+			
+			boolean middleWall = false;
+			boolean upperLowerBlock = false;
+			for( int j=0 ; j<3 ; j++ ){
+				char ch[] = in.readLine().toCharArray();
+				for( int i=0 ; i<n ; i++ ){
+					matrix[j][i] = ch[i];
+					if( j==1 && matrix[j][i] == '#' ){
+						middleWall = true;
+					}
+				}
+			}
+			long ans = 0;
+			if( n%2 == 1 ) ans=0;
+			else if(middleWall) ans=0;
+			else{
+				int ansPow = (n-2)/2;
+				for( int i=1 ; i<(n-1) ; i+=2 ){
+					boolean upperBlock = false, lowerBlock = false;
+					if( matrix[0][i] == '#' || matrix[0][i+1] == '#' ){
+						ansPow--;
+						upperBlock = true;
+					}
+					if( matrix[2][i] == '#' || matrix[2][i+1] == '#' ){
+						ansPow--;
+						lowerBlock = true;
+					}
+					if( upperBlock && lowerBlock )
+						upperLowerBlock = true;
+					
+				}
+				if( upperLowerBlock )
+					ans = 0;
+				else if( matrix[0][0] == '#' || matrix[2][n-1] == '#' )
+					ans = 0;
+				else{
+					ans = pow(2, ansPow , mod);
+				}
+				
+			}
+			
+			pw.println(" " + ans);
+			caseIndex++;
+		}while( caseIndex <= t );
+
+		pw.close();
+
+	}

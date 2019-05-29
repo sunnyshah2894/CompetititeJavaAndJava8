@@ -1,0 +1,126 @@
+The important points about Java ArrayList class are:
+	◦	Java ArrayList class can contain duplicate elements.
+	◦	Java ArrayList class maintains insertion order.
+	◦	Java ArrayList class is non synchronized.
+	◦	Java ArrayList allows random access because array works at the index basis.
+	◦	In Java ArrayList class, manipulation is slow because a lot of shifting needs to be occurred if any element is removed from the array list.
+
+Vector:
+	◦  	Vector is synchronized, meaning it is slow. 
+
+The important points about Java LinkedList are:
+	◦	Java LinkedList class can contain duplicate elements.
+	◦	Java LinkedList class maintains insertion order.
+	◦	Java LinkedList class is non synchronized.
+	◦	In Java LinkedList class, manipulation is fast because no shifting needs to be occurred.
+	◦	Java LinkedList class can be used as list, stack or queue.
+
+	
+ListIterator Interface declaration
+
+	1.	public interface ListIterator<E> extends Iterator<E>  
+
+	boolean hasNext()
+		This method return true if the list iterator has more elements when traversing the list in the forward direction.
+	Object next()
+		This method return the next element in the list and advances the cursor position.
+	boolean hasPrevious()
+		This method return true if this list iterator has more elements when traversing the list in the reverse direction.
+	Object previous()
+		This method return the previous element in the list and moves the cursor position backwards.
+	
+	***** Example *****
+	ListIterator<String> itr=al.listIterator();  
+	System.out.println("traversing elements in forward direction...");  
+	while(itr.hasNext()){  
+		System.out.println(itr.next());  
+	}  		
+		
+The important points about Java HashSet class are:
+	◦	HashSet stores the elements by using a mechanism called hashing.
+	◦	HashSet contains unique elements only.
+		
+		
+Java LinkedHashSet class is a Hash table and Linked list implementation of the set interface. It inherits HashSet class and implements Set interface.
+The important points about Java LinkedHashSet class are:
+	◦	Contains unique elements only like HashSet.
+	◦	Provides all optional set operations, and permits null elements.
+	◦	Maintains insertion order.
+		
+Java TreeSet class implements the Set interface that uses a tree for storage. It inherits AbstractSet class and implements NavigableSet interface. The objects of TreeSet class are stored in ascending order.
+The important points about Java TreeSet class are:
+	◦	Contains unique elements only like HashSet.
+	◦	Access and retrieval times are quiet fast.
+	◦	Maintains ascending order.
+		
+Java PriorityQueue Example: Book
+Let's see a PriorityQueue example where we are adding books to queue and printing all the books. 
+The elements in PriorityQueue must be of Comparable type. 
+String and Wrapper classes are Comparable by default. 
+To add user-defined objects in PriorityQueue, you need to implement Comparable interface.
+		
+		
+Java TreeMap class implements the Map interface by using a tree. It provides an efficient means of storing key/value pairs in sorted order.
+The important points about Java TreeMap class are:
+	◦	A TreeMap contains values based on the key. It implements the NavigableMap interface and extends AbstractMap class.
+	◦	It contains only unique elements.
+	◦	It cannot have null key but can have multiple null values.
+	◦	It is same as HashMap instead maintains ascending order.
+		
+HashTable is completely synchronized hash Map with every operation on the map 
+synchronized.
+Synchronized Hash map is a static class with wrapper on top of existing hashmap
+and all the methods in the synchronized hash map calls the original hashmap
+methods, but from within a synchronized block.
+
+		
+There are two collections made on top of enums. enumSet and enumMap...
+
+Enum Set is a set to store the enums.
+Set<days> set = EnumSet.of(days.TUESDAY, days.WEDNESDAY);
+Set<days> set1 = EnumSet.allOf(days.class);  
+Set<days> set2 = EnumSet.noneOf(days.class); 
+
+Enum Map is a key value pair to store the enum -> any value
+
+	EnumMap<Days, String> map = new EnumMap<Days, String>(Days.class);  
+	map.put(Days.Monday, "1");  
+    map.put(Days.Tuesday, "2"); 
+    map.put(Days.Wednesday, "3");  
+    map.put(Days.Thursday, "4");  
+    // print the map  
+    for(Map.Entry m:map.entrySet()){    
+        System.out.println(m.getKey()+" "+m.getValue());    
+       }   
+    }  
+   
+
+
+Methods of Java Collections class
+
+Method	Description
+static <T> boolean addAll(Collection<? super T> c, T... elements)	It is used to add all of the specified elements to the specified collection.
+static <T> Queue<T> asLifoQueue(Deque<T> deque)	It is used to return a view of a Deque as a Last-In-First-Out (LIFO) Queue.
+static <T> int binarySearch(List<? extends T> list, T key, Comparator<? super T< c)	It is used to search the specified list for the specified object using the binary search algorithm.
+static <E> List<E>	checkedList(List<E> list, Class<E> type)	It is used to return a dynamically typesafe view of the specified list.
+static <E> Set<E> checkedSet(Set<E> s, Class<E> type)	It is used to return a dynamically typesafe view of the specified set.
+static <E> SortedSet<E>checkedSortedSet(SortedSet<E> s, Class<E> type)	It is used to return a dynamically typesafe view of the specified sorted set
+static void reverse(List<?> list)	It is used to reverse the order of the elements in the specified list.
+static <T> T max(Collection<? extends T> coll, Comparator<? super T> comp)	It is used to return the maximum element of the given collection, according to the order induced by the specified comparator.
+static <T extends Object & Comparable<? super T>>T min(Collection<? extends T> coll)	It is used to return the minimum element of the given collection, according to the natural ordering of its elements.
+static boolean replaceAll(List list, T oldVal, T newVal)	It is used to replace all occurrences of one specified value in a list with another.
+public void sort(List list, Comparator c): is used to sort the elements of List by the given Comparator.
+
+
+
+List<Integer> l = Arrays.asList(1,2,3,4,4,4,3,2,12,2,12,1)
+	generates a unmodifiable list from the array.
+	the list is pointing to the actual array passed and the asList method provides a
+	wrapper over the array to use it as a list. 
+
+Collections.toArray(l)
+	creates a new array which makes its own copy of the list in the parameter
+	and the returned object of the array is free to modifiable.
+    
+    
+    

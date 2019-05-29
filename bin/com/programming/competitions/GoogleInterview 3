@@ -1,0 +1,54 @@
+Please use this Google doc to code during your interview. To free your hands for coding, we recommend that you use a headset or a phone with speaker option.
+
+Hi, I’m Zero.
+
+Q1. Given a boolean array
+True I need to work
+False I don’t to work
+find the longest vacation
+
+
+Lets a boolean var hasVacstarted= true> has my vacation started … 
+countOfVac = 2;
+answer = max(answer, countOfVac) -> 4 
+FFTFFTTFFTFFT
+12345312345
+Q2. Given a boolean array, take one extra day off, find the longest vacation
+
+
+int findMaxVacDays( boolean days[] ){
+
+int maxVac = 0;
+int secondLastWorkingDay = -1;
+int LastWorkingDay = -1;
+
+for( int i=0 ; i<days.length ; i++ ){
+    
+    if( days[i] ){ // we need to find the lastWorkingDay index
+            maxVac = Math.max( maxVac, i-lastWorkingDay );
+            secondLastWorkingDay = lastWorkingDay;
+            lastWorkingDay = i;
+} 
+    else{        // we need to find the secondLastWorkingDay index
+        maxVac = Math.max( maxVac , i-secondLastWorkingDay );
+}    
+}     
+    return maxVac;
+}
+
+Q3. Given a string A, integer M.
+M-subsequence of A: pick M chars in A and keep the order.
+
+“bajbabkfas” m=5 akfs  akfas
+10987654321  next smallest that can make M=4  
+                m = 3
+aaaaabbbbbb
+a -> 1,2,3,4,5 b->
+
+M = 5
+O( N*M)
+“boolean” 
+3-sub : “boo”, “lan”
+“olo” is NOT
+
+find the smallest M-subsequences of A.
